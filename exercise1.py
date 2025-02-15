@@ -17,6 +17,13 @@ def home(send_name):
     return render_template('index2.html', name=my_name, age=my_age, gender=my_gender)
 
 
+@app.route('/blog')
+def blog():
+    response3 = requests.get('https://api.npoint.io/d3956500e07e4947dcc2')
+    all_post = response3.json()
+    return render_template('blog.html', posts=all_post)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
